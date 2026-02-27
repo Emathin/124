@@ -12,9 +12,8 @@
     <label>Tipo de combustible:</label>
     <select th:field="*{tipoCombustible}" required>
         <option value="">Seleccione una opción</option>
-        <option value="nafta">Nafta</option>
-        <option value="gasoil">Gasoil</option>
-        <option value="gas">Gas</option>
+        <option value="NAFTA">Nafta</option>
+        <option value="GASOIL">Gasoil</option>
     </select><br><br>
     <input type="submit" value="Calcular presupuesto" th:formaction="@{/calcularPresupuesto}"><br><br>
     <div th:if="*{presupuesto != null}">

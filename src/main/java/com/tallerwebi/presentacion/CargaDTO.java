@@ -7,30 +7,30 @@ import java.time.LocalDateTime;
 public class CargaDTO {
 
 
-     private double LitrosCargados;
+     private Double litrosCargados;
      private TipoCombustible tipoCombustible;
-     private double precioPagado;
+     private Double precioPagado;
      private LocalDateTime fechaCarga;
     private Double presupuesto;
 
-    public CargaDTO(double LitrosCargados, TipoCombustible tipoCombustible, double precioPagado, LocalDateTime fechaCarga){
+    public CargaDTO(Double litrosCargados, TipoCombustible tipoCombustible, Double precioPagado){
 
-        this.LitrosCargados = LitrosCargados;
+        this.litrosCargados = litrosCargados;
         this.tipoCombustible = tipoCombustible;
         this.precioPagado = precioPagado;
-        this.fechaCarga = fechaCarga;
+        this.fechaCarga = LocalDateTime.now();
     }
 
     public CargaDTO() {
 
     }
 
-    public double getLitrosCargados() {
-        return LitrosCargados;
+    public Double getlitrosCargados() {
+        return litrosCargados;
     }
 
-    public void setLitrosCargados(double litrosCargados) {
-        this.LitrosCargados = litrosCargados;
+    public void setlitrosCargados(Double litrosCargados) {
+        this.litrosCargados = litrosCargados;
     }
 
     public TipoCombustible getTipoCombustible() {
@@ -41,11 +41,11 @@ public class CargaDTO {
         this.tipoCombustible = tipoCombustible;
     }
 
-    public double getPrecioPagado() {
+    public Double getPrecioPagado() {
         return precioPagado;
     }
 
-    public void setPrecioPagado(double precioPagado) {
+    public void setPrecioPagado(Double precioPagado) {
         this.precioPagado = precioPagado;
     }
 

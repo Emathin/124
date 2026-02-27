@@ -21,7 +21,7 @@ public class ServicioCargaImpl implements ServicioCarga{
 
     public Boolean guardarCarga(CargaDTO cargaDTO) {
 
-        Carga carga=new Carga(cargaDTO.getLitrosCargados(),cargaDTO.getTipoCombustible(),cargaDTO.getPrecioPagado(),cargaDTO.getFechaCarga());
+        Carga carga=new Carga(cargaDTO.getlitrosCargados(),cargaDTO.getTipoCombustible(),cargaDTO.getPrecioPagado(),cargaDTO.getFechaCarga());
         Carga carga2=repositorioCarga.guardarCarga(carga);
         if(carga2.getId()!=null){
             return true;
@@ -33,7 +33,7 @@ public class ServicioCargaImpl implements ServicioCarga{
     @Override
     public CargaDTO calcularPresupuesto(CargaDTO cargaDTO) {
         Double valorCombustible=repositorioCarga.obtenerValorCombustible(cargaDTO.getTipoCombustible());
-        Double precioPresupuestado=valorCombustible*cargaDTO.getLitrosCargados();
+        Double precioPresupuestado=valorCombustible*cargaDTO.getlitrosCargados();
         cargaDTO.setPresupuesto(precioPresupuestado);
         return cargaDTO;
     }

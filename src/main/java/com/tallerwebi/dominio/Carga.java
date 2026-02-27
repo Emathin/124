@@ -9,13 +9,13 @@ public class Carga {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-     private double litrosCargados;
+     private Double litrosCargados;
     @Enumerated(EnumType.STRING)
      private TipoCombustible tipoCombustible;
-     private double precioPagado;
+     private Double precioPagado;
      private LocalDateTime fechaCarga;
 
-    public Carga(double litrosCargados, TipoCombustible tipoCombustible, double precioPagado, LocalDateTime fechaCarga) {
+    public Carga(Double litrosCargados, TipoCombustible tipoCombustible, Double precioPagado, LocalDateTime fechaCarga) {
         this.litrosCargados = litrosCargados;
         this.tipoCombustible = tipoCombustible;
         this.precioPagado = precioPagado;
@@ -34,11 +34,11 @@ public class Carga {
         this.id = id;
     }
 
-    public double getLitrosCargados() {
+    public Double getlitrosCargados() {
         return litrosCargados;
     }
 
-    public void setLitrosCargados(double litrosCargados) {
+    public void setlitrosCargados(Double litrosCargados) {
         this.litrosCargados = litrosCargados;
     }
 
@@ -50,11 +50,11 @@ public class Carga {
         this.tipoCombustible = tipoCombustible;
     }
 
-    public double getPrecioPagado() {
+    public Double getPrecioPagado() {
         return precioPagado;
     }
 
-    public void setPrecioPagado(double precioPagado) {
+    public void setPrecioPagado(Double precioPagado) {
         this.precioPagado = precioPagado;
     }
 

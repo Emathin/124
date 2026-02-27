@@ -29,7 +29,7 @@ public class ControladorCargaTest {
     @Test
     public void queObtenaMensajeExitosoSiLaCargaFueExitosa(){
 
-        CargaDTO cargaDTO=new CargaDTO(10.00, TipoCombustible.NAFTA,500.00, LocalDateTime.now());
+        CargaDTO cargaDTO=new CargaDTO(10.00, TipoCombustible.NAFTA,500.00);
 
         when(servicioCarga.guardarCarga(any(CargaDTO.class))).thenReturn(true);
 
@@ -43,7 +43,7 @@ public class ControladorCargaTest {
     @Test
     public void queObtenaMensajeFallidoSiLaCargaFueExitosa(){
 
-        CargaDTO cargaDTO=new CargaDTO(10.00, null,10.00, null);
+        CargaDTO cargaDTO=new CargaDTO(10.00, null,10.00);
 
         when(servicioCarga.guardarCarga(any(CargaDTO.class))).thenReturn(false);
 
@@ -57,9 +57,9 @@ public class ControladorCargaTest {
 
     @Test
     public void queSePuedaCalcularUnPresupuesto(){
-        CargaDTO cargaDTO=new CargaDTO(10.00, TipoCombustible.NAFTA,10.00, LocalDateTime.now());
-        CargaDTO cargaDTOPresupuestada=new CargaDTO(cargaDTO.getLitrosCargados(),
-                cargaDTO.getTipoCombustible(),cargaDTO.getPrecioPagado(),cargaDTO.getFechaCarga());
+        CargaDTO cargaDTO=new CargaDTO(10.00, TipoCombustible.NAFTA,10.00);
+        CargaDTO cargaDTOPresupuestada=new CargaDTO(cargaDTO.getlitrosCargados(),
+                cargaDTO.getTipoCombustible(),cargaDTO.getPrecioPagado());
         cargaDTOPresupuestada.setPresupuesto(100.00);
 
         when(servicioCarga.calcularPresupuesto(any(CargaDTO.class))).thenReturn(cargaDTOPresupuestada);

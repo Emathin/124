@@ -28,7 +28,7 @@ public class ServicioCargaTest {
 
     @Test
     public void queGuardeUnaCarga(){
-        CargaDTO cargaDTO=new CargaDTO(10.00, TipoCombustible.NAFTA,10.00, LocalDateTime.now());
+        CargaDTO cargaDTO=new CargaDTO(10.00, TipoCombustible.NAFTA,10.00);
 
         Carga carga2=new Carga(10.00, TipoCombustible.NAFTA,10.00, LocalDateTime.now());
         carga2.setId(1L);
@@ -42,7 +42,7 @@ public class ServicioCargaTest {
 
     @Test
     public void queNoGuardeUnaCarga(){
-        CargaDTO cargaDTO=new CargaDTO(10.00, TipoCombustible.NAFTA,10.00, LocalDateTime.now());
+        CargaDTO cargaDTO=new CargaDTO(10.00, TipoCombustible.NAFTA,10.00);
 
         Carga carga2=new Carga(10.00, TipoCombustible.NAFTA,10.00, LocalDateTime.now());
 
@@ -56,7 +56,7 @@ public class ServicioCargaTest {
 
     @Test
     public void queSePuedaCalcularUnPresupuesto(){
-        CargaDTO cargaDTO=new CargaDTO(10.00, TipoCombustible.NAFTA,10.00, LocalDateTime.now());
+        CargaDTO cargaDTO=new CargaDTO(10.00, TipoCombustible.NAFTA,10.00);
 
         when(repositorioCarga.obtenerValorCombustible(any(TipoCombustible.class))).thenReturn(100.00);
 

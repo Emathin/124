@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cargar combustible</title>
+</head>
+<body>
+<h2>Formulario generación de carga de combustible:</h2>
+<form th:object="${cargaDTO}" th:action="@{/guardarCarga}" method="post">
+    <label>Cantidad de combustible:</label>
+    <input th:field="*{litrosCargados}" type="number" step="0.1" required><br><br>
+    <label>Tipo de combustible:</label>
+    <select th:field="*{tipoCombustible}" required>
+        <option value="">Seleccione una opción</option>
+        <option value="nafta">Nafta</option>
+        <option value="gasoil">Gasoil</option>
+        <option value="gas">Gas</option>
+    </select><br><br>
+    <label>Precio pagado:</label>
+    <input th:field="*{precioPagado}" type="number" step="0.1" required><br><br>
+    <button type="submit">Guardar carga</button>
+</form>
+</body>
+</html>

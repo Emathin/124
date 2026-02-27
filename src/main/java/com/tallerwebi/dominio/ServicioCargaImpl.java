@@ -30,4 +30,13 @@ public class ServicioCargaImpl implements ServicioCarga{
         }
     }
 
+    @Override
+    public CargaDTO calcularPresupuesto(CargaDTO cargaDTO) {
+        Double valorCombustible=repositorioCarga.obtenerValorCombustible(cargaDTO.getTipoCombustible());
+        Double precioPresupuestado=valorCombustible*cargaDTO.getLitrosCargados();
+        cargaDTO.setPresupuesto(precioPresupuestado);
+        return cargaDTO;
+    }
+
+
 }

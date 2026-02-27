@@ -29,7 +29,7 @@ public class ControladorCargaTest {
     @Test
     public void queObtenaMensajeExitosoSiLaCargaFueExitosa(){
 
-        CargaDTO cargaDTO=new CargaDTO(10.00, TipoCombustible.nafta,500.00, LocalDateTime.now());
+        CargaDTO cargaDTO=new CargaDTO(10.00, TipoCombustible.NAFTA,500.00, LocalDateTime.now());
 
         when(servicioCarga.guardarCarga(any(CargaDTO.class))).thenReturn(true);
 
@@ -52,6 +52,21 @@ public class ControladorCargaTest {
         assertThat(mav.getViewName(),is("respuestaDeCarga"));
 
         assertThat(mav.getModel().get("mensaje"),is("Carga fallida"));
+
+    }
+
+    @Test
+    public void queSePuedaCalcularUnPresupuesto(){
+        CargaDTO cargaDTO=new CargaDTO(10.00, TipoCombustible.NAFTA,10.00, LocalDateTime.now());
+        CargaDTO cargaDTOPresupuestada=new CargaDTO(cargaDTO.getLitrosCargados(),
+                cargaDTO.getTipoCombustible(),cargaDTO.getPrecioPagado(),cargaDTO.getFechaCarga());
+        cargaDTOPresupuestada.setPresupuesto(100.00);
+
+        when(servicioCarga.calcularPresupuesto(any(CargaDTO.class))).thenReturn(cargaDTOPresupuestada);
+
+        ModelAndView mav=controladorCarga.calcularPresupuesto(cargaDTO);
+
+        assertThat(mav.getViewName(),is("cargarCombustible"));
 
     }
 

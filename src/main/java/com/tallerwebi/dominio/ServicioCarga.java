@@ -6,4 +6,5 @@ public interface ServicioCarga {
 
     Boolean guardarCarga(CargaDTO cargaDTO);
 
+    CargaDTO calcularPresupuesto(CargaDTO cargaDTO);
 }

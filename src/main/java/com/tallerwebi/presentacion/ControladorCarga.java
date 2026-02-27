@@ -35,4 +35,12 @@ public class ControladorCarga {
         mav.addObject("cargaDTO", new CargaDTO());
         return mav;
     }
+
+    @PostMapping("/calcularPresupuesto")
+    public ModelAndView calcularPresupuesto(CargaDTO cargaDTO) {
+        ModelAndView mav =new ModelAndView("cargarCombustible");
+        CargaDTO cargaDTOPresupuestada=servicioCarga.calcularPresupuesto(cargaDTO);
+        mav.addObject("cargaDTO",cargaDTOPresupuestada);
+        return mav;
+    }
 }

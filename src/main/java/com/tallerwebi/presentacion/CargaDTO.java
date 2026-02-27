@@ -11,6 +11,7 @@ public class CargaDTO {
      private TipoCombustible tipoCombustible;
      private double precioPagado;
      private LocalDateTime fechaCarga;
+    private Double presupuesto;
 
     public CargaDTO(double LitrosCargados, TipoCombustible tipoCombustible, double precioPagado, LocalDateTime fechaCarga){
 
@@ -55,4 +56,14 @@ public class CargaDTO {
     public void setFechaCarga(LocalDateTime fechaCarga) {
         this.fechaCarga = fechaCarga;
     }
+
+    public Double getPresupuesto() {
+        return presupuesto;
+    }
+
+    public void setPresupuesto(Double presupuesto) {
+        this.presupuesto = presupuesto;
+    }
+
+
 }

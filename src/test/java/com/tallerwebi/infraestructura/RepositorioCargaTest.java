@@ -5,6 +5,8 @@ import com.tallerwebi.config.SpringWebConfig;
 import com.tallerwebi.dominio.Carga;
 import com.tallerwebi.dominio.RepositorioCarga;
 import com.tallerwebi.dominio.TipoCombustible;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +32,16 @@ public class RepositorioCargaTest {
 
     @Test
     public void queGuardeUnaCarga(){
-        Carga carga=new Carga(10.00, TipoCombustible.nafta,10.00, LocalDateTime.now());
+        Carga carga=new Carga(10.00, TipoCombustible.NAFTA,10.00, LocalDateTime.now());
         Carga cargaRecibida = repositorioCarga.guardarCarga(carga);
         assertThat(cargaRecibida.getId(),notNullValue());
+    }
+
+    @Test
+    public void queObtengaValorCombustible(){
+
+        Double valorCombustible = repositorioCarga.obtenerValorCombustible(TipoCombustible.NAFTA);
+        MatcherAssert.assertThat(valorCombustible, Matchers.is(1000.00));
     }
 
 

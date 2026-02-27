@@ -16,9 +16,17 @@
         <option value="gasoil">Gasoil</option>
         <option value="gas">Gas</option>
     </select><br><br>
+    <input type="submit" value="Calcular presupuesto" th:formaction="@{/calcularPresupuesto}"><br><br>
+    <div th:if="*{presupuesto != null}">
+        <p style="color: green; font-weight: bold;">
+            Presupuesto: <span th:text="*{presupuesto}"></span> ARS
+        </p>
+        <input type="hidden" th:field="*{presupuesto}">
+    </div>
     <label>Precio pagado:</label>
     <input th:field="*{precioPagado}" type="number" step="0.1" required><br><br>
-    <button type="submit">Guardar carga</button>
+    <button type="submit">Registrar carga</button>
+    <a th:href="@{/historial}">Panel flota</a>
 </form>
 </body>
 </html>

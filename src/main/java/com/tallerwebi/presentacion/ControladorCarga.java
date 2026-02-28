@@ -43,4 +43,11 @@ public class ControladorCarga {
         mav.addObject("cargaDTO",cargaDTOPresupuestada);
         return mav;
     }
+
+    @GetMapping("/historial")
+    public ModelAndView obtenerHistorialDeCargas() {
+        ModelAndView mav=new ModelAndView("historial");
+        mav.addObject("cargas",servicioCarga.obtenerHistorialDeCargas());
+        return mav;
+    }
 }

@@ -2,6 +2,7 @@ package com.tallerwebi.presentacion;
 
 import com.tallerwebi.dominio.ServicioCarga;
 import com.tallerwebi.dominio.TipoCombustible;
+import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -10,9 +11,11 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -58,7 +61,7 @@ public class ControladorCargaTest {
     @Test
     public void queSePuedaCalcularUnPresupuesto(){
         CargaDTO cargaDTO=new CargaDTO(10.00, TipoCombustible.NAFTA,10.00);
-        CargaDTO cargaDTOPresupuestada=new CargaDTO(cargaDTO.getlitrosCargados(),
+        CargaDTO cargaDTOPresupuestada=new CargaDTO(cargaDTO.getLitrosCargados(),
                 cargaDTO.getTipoCombustible(),cargaDTO.getPrecioPagado());
         cargaDTOPresupuestada.setPresupuesto(100.00);
 
@@ -67,6 +70,25 @@ public class ControladorCargaTest {
         ModelAndView mav=controladorCarga.calcularPresupuesto(cargaDTO);
 
         assertThat(mav.getViewName(),is("cargarCombustible"));
+
+    }
+
+    @Test
+    public void queSePuedaAccederAlHistorialDeCargasDeCombustibles(){
+
+
+        CargaDTO cargaDTO=new CargaDTO(10.00, TipoCombustible.NAFTA,10.00);
+        List<CargaDTO> listaDeCargasDTO=new ArrayList<>();
+        listaDeCargasDTO.add(cargaDTO);
+
+        when(servicioCarga.obtenerHistorialDeCargas()).thenReturn(listaDeCargasDTO);
+
+        ModelAndView mav=controladorCarga.obtenerHistorialDeCargas();
+
+        MatcherAssert.assertThat(listaDeCargasDTO.size(),is(1));
+        assertThat(mav.getViewName(),is("historialDeCargas"));
+        assertThat(listaDeCargasDTO.get(0),is(instanceOf(CargaDTO.class)));
+        assertThat(listaDeCargasDTO.get(0),is(notNullValue()));
 
     }
 

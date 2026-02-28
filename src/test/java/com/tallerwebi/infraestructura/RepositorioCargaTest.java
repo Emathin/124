@@ -10,6 +10,7 @@ import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -31,20 +32,29 @@ public class RepositorioCargaTest {
     private RepositorioCarga repositorioCarga;
 
     @Test
-    public void queGuardeUnaCarga(){
-        Carga carga=new Carga(10.00, TipoCombustible.NAFTA,10.00, LocalDateTime.now());
+    public void queGuardeUnaCarga() {
+        Carga carga = new Carga(10.00, TipoCombustible.NAFTA, 10.00, LocalDateTime.now());
         Carga cargaRecibida = repositorioCarga.guardarCarga(carga);
-        assertThat(cargaRecibida.getId(),notNullValue());
+        assertThat(cargaRecibida.getId(), notNullValue());
     }
 
     @Test
-    public void queObtengaValorCombustible(){
+    public void queObtengaValorCombustible() {
 
         Double valorCombustible = repositorioCarga.obtenerValorCombustible(TipoCombustible.NAFTA);
         MatcherAssert.assertThat(valorCombustible, Matchers.is(1000.00));
     }
 
 
+    @Test
+    public void queSeObtengaElHistorialDeCargas() {
+        Carga carga1 = new Carga(10.00, TipoCombustible.NAFTA, 10.00, LocalDateTime.now());
+        Carga carga2 = new Carga(20.00, TipoCombustible.GASOIL, 20.00, LocalDateTime.now());
 
+        repositorioCarga.guardarCarga(carga1);
+        repositorioCarga.guardarCarga(carga2);
 
+        assertThat(repositorioCarga.obtenerHistorialDeCargas().size(), Matchers.is(4));
+
+    }
 }

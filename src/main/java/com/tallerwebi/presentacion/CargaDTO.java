@@ -25,11 +25,18 @@ public class CargaDTO {
 
     }
 
-    public Double getlitrosCargados() {
+    public CargaDTO(Double litrosCargados, TipoCombustible tipoCombustible, Double precioPagado, LocalDateTime fechaCarga) {
+        this.litrosCargados = litrosCargados;
+        this.tipoCombustible = tipoCombustible;
+        this.precioPagado = precioPagado;
+        this.fechaCarga = fechaCarga;
+    }
+
+    public Double getLitrosCargados() {
         return litrosCargados;
     }
 
-    public void setlitrosCargados(Double litrosCargados) {
+    public void setLitrosCargados(Double litrosCargados) {
         this.litrosCargados = litrosCargados;
     }
 
@@ -64,6 +71,4 @@ public class CargaDTO {
     public void setPresupuesto(Double presupuesto) {
         this.presupuesto = presupuesto;
     }
-
-
 }

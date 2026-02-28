@@ -5,7 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-
-<span th:object="${mensaje}"></span>
+<div th:text="*{mensaje}"></div><br>
+<a th:href="@{/historial}">Panel flota</a><br>
+<a th:href="@{/cargarCombustible.html}">Cargar combustible</a><br>
 </body>
 </html>

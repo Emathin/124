@@ -8,6 +8,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class RepositorioCargaImpl implements RepositorioCarga {
 
@@ -33,5 +35,12 @@ public class RepositorioCargaImpl implements RepositorioCarga {
                 .setParameter("tipo", tipoCombustible.name()) // Usamos .name() para asegurar el envío del String
                 .uniqueResult();
     }
+
+    @Override
+    public List<Carga> obtenerHistorialDeCargas() {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("FROM Carga", Carga.class).list();
+    }
+
 
 }

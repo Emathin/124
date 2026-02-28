@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Historial</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Litros cargados</th>
+        <th>Tipo de combustible</th>
+        <th>Fecha de la carga</th>
+        <th>Precio pagado</th>
+    </tr>
+    <tr th:each="carga : ${cargas}">
+        <td th:text="${carga.litrosCargados}"></td>
+        <td th:text="${carga.tipoCombustible}"></td>
+        <td th:text="${carga.fechaCarga}"></td>
+        <td th:text="${carga.precioPagado}"></td>
+    </tr>
+</table>
+<br>
+<a th:href="@{/cargarCombustible.html}">Registrar nueva carga</a><br>
+</body>
+</html>
